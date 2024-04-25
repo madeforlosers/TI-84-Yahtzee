@@ -1,0 +1,274 @@
+ClrDraw
+0→F
+3→A
+0→C
+0→V
+5→dim(L1
+Fill(0,L1
+5→dim(L2
+Fill(0,L2
+12→dim(L3
+Fill(-1,L3
+"Three of a kind  Three →Str1
+"Four of a kind  Four of→Str2
+"Full House     Full Hou→Str3
+"Small Straight  Small S→Str4
+"Large Straight  Large S→Str5
+For(D,1,5
+17D-14→X
+7D→H
+49→R
+For(L,1,10
+Pxl-On(R+L,X
+Pxl-On(R,X+L
+Pxl-On(R+L,X+11
+Pxl-On(R+11,X+L
+End
+Text(R+3,X+3,1
+End
+Text(0,1,"Aces
+Text(0,47,"Three ...
+Text(8,1,"Twos
+Text(8,47,"Four o...
+Text(16,1,"Threes
+Text(16,47,"Full Ho...
+Text(24,1,"Fours
+Text(24,47,"Small ...
+Text(32,1,"Fives
+Text(32,47,"Large ...
+Text(40,1,"Sixes
+Text(40,47,"Yahtzee
+For(T,0,47,8
+For(L,0,6
+Pxl-On(T+L,25
+Pxl-On(T+L,45
+Pxl-On(T+L,76
+End
+For L,0,94
+Pxl-On(T+7,L
+End
+End
+For(J,0,3
+Pxl-On(62,17C+J+5
+End
+0→T
+Lbl R
+For(L,1,10
+For(D,1,5
+If not(L2(D
+Then
+17D-14→X
+49→R
+randInt(1,6→N
+Text(R+3,X+3,N
+N→L1(D
+End
+End
+End
+A-1→A
+Text(49,85,"Rol
+Text(56,85,"       "
+Text(56,85,A
+Lbl G
+GetKey→G
+If not(Ans
+Goto G
+For(J,5,8
+Pxl-Off(62,17C+J
+End
+If G=23
+Goto O
+C-(G=24)+(G=26→C
+C+5(C<0)-5(C>4→C
+For(J,5,8
+Pxl-On(62,17C+J
+End
+If G=21
+Goto H
+If G=105 and A
+Goto R
+If G=31 or not(A
+Then
+0→W
+While -1≠L3(W+1
+W+1→W
+End
+40+50(W>5→θ
+remainder(W,6→U
+Text(8U,θ,"<
+Goto P
+End
+Goto G
+Lbl L
+getKey→G
+If W≥6 and W≠11
+Then
+If W=6
+Str1→Str9
+If W=7
+Str2→Str9
+If W=8
+Str3→Str9
+If W=9
+Str4→Str9
+If W=10
+Str5→Str9
+N+1→N
+If N>16
+1→N
+sub(Str9,N,8→Str0
+Text((W-6)8,60,"........
+Text(W-6)8,47,Str0
+Else
+1→N
+End
+If not(G
+Goto L
+Text(8U,θ,"    "
+If G=34
+Then
+0→N
+W+1→W
+If W>11
+0→W
+While -1≠L3(W+1
+W+1→W
+End
+Goto P
+End
+If G=105
+Goto S
+Lbl Q
+40+50(W>5→θ
+remainder(W,6→U
+Text(8U,θ,"<
+If G=22 and A
+Then
+Text(8U,θ,"     "
+Goto G
+End
+Goto L
+Lbl P
+0→P
+If W<6
+sum(L1=W+1)(W+1→P
+If W=6
+Then
+0→O
+For(I,1,6
+If 3≤sum(L1=I
+sum(L1→P
+End
+End
+If W=7
+Then
+For(I,1,6
+If 4≤sum(L1=I
+sum(L1→P
+End
+End
+If W=8
+Then
+0→O
+For(I,1,6
+If 3=sum(L1=I
+I→O
+End
+For(I,1,6
+If 2=Sum(L1=I) and I≠O and O
+25→P
+End
+End
+If W=9
+Then
+L1→L6
+SortA(L6
+L6(1→O
+0→F
+For(J,2,5
+F+(L6(J)-O=1)-F(L6(J)-O>1→F
+30(F>2 or P→P
+L6(J→O
+End
+End
+If W=10
+Then
+0→F
+L1→L6
+SortA(L6
+L6(1→O
+1→F
+For(J,2,5
+If L6(J)-O≠1
+0→F
+L6(J→O
+End
+If F
+40→P
+End
+If W=11
+Then
+For(J,1,6
+If 5=sum(L1=J
+50→P
+End
+End
+Text(49,85,"Pts
+Text(56,85,"                   "
+Text(56,85,P
+Goto Q
+Lbl H
+If L2(C+1
+Then
+Text(52,(C+1)17-C,"   "
+0→L2(C+1
+Else
+Text(52,(C+1)17-7,"H
+1→L2(C+1
+End
+Goto G
+Lbl S
+P→L3(W+1
+Text(8U,θ,"   "
+Text(*U,θ-10,P
+3→A
+For(F,0,5
+Text(52,17F-8,"   "
+0→L2(F
+End
+0→O
+For(J,1,12
+If -1≠L3(J
+O+1→O
+End
+O=12→T
+If not(T
+Goto R
+Lbl O
+ClrHome
+Output(1,1,"YOUR SCORE IS
+12→dim(L6
+For(J,1,12
+L3(J)(-1≠L3(J→L6(J
+End
+sum(L6→F
+0→O
+6→dim(L5
+For(J,1,6
+L3(J→L5(J
+End
+If sum(L5)≥63
+Then
+F+35→F
+Output(2,6,"UB
+End
+Output(2,1,F
+Pause
+Pxl-On(62,94
+Pxl-Off(62,94
+If not(T
+Goto G
+Disp "
+Disp "
+DIsp "
+Disp ":3
