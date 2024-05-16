@@ -62,3 +62,200 @@ End
 End
 End
 Fill(0,L5
+A-1→A
+Text(49,85,"Ro
+Text(56,85,"         "
+Text(56,85,A
+Lbl G
+getKey→G
+If not(Ans
+Goto G
+For(𝑛,5,8
+Pxl-Off(62,17C+𝑛
+End
+If G=23
+Goto O
+C-(G=24)+(G=26→C
+C+5(C<0)-5(C>4→C
+For(𝑛,5,8
+Pxl-On(62,17C+𝑛
+End
+If G=21
+Goto H
+If G=105 and A
+Goto R
+If G=31 or not(A
+Then
+sum(not(cumSum(L3=-1→W
+40+50(W>5→θ
+remainder(W,6→U
+Text(8U,θ,"<
+Goto P
+End
+Goto G
+Lbl L
+getKey→G
+If W≥6 and W≠11
+Then
+N+1→N
+N-(N-1)(N>16→N
+sub(expr(sub("Str1Str2Str3Str4Str5",W-5,1)),N,7→Str0
+Text((W-6)8,60,"               "
+Text((W-6)8,47,Str0
+Else
+1→N
+End
+If not(G
+Goto L
+Text(8U,θ,"    "
+If G=34
+Then
+0→N
+W+1→W
+W-W(W>11→W
+While -1≠L3(W+1
+(W+1)(W≤11→W
+End
+Goto P
+End
+If G=105
+Goto S
+Lbl Q
+40+50(W>5→θ
+remainder(W,6→U
+Text(8U,θ,"<
+If G=22 and A
+Then
+Text(8U,θ,"     "
+Goto G
+End
+Goto L
+Lbl P
+0→P
+If W<6
+sum(L1=W+1)(W+1)→P
+If W=6
+Then
+For(𝑛,1,6
+If 3≤sum(L1=𝑛
+sum(L1→P
+End
+End
+If W=7
+Then
+For(𝑛,1,6
+If 4≤sum(L1=𝑛
+sum(L1→P
+End
+End
+If W=8
+Then
+0→O
+For(𝑛,1,6
+If 3=sum(L1=𝑛
+𝑛→O
+End𝑛
+For(𝑛,1,6
+If 𝑛≠O and O and 2=sum(L1=𝑛
+25→P
+End
+End
+If W=9
+Then
+L1→L6
+SortA(L6
+L6(1→O
+0→F
+For(𝑛,2,5
+F+(L6(𝑛)-O=1)-F(L6(𝑛)-O>1→F
+30(F>2 or P→P
+L6(𝑛→O
+End
+End
+If W=10
+Then
+L1→L6
+SortA(L6
+L6(1→O
+1→F
+For(𝑛,2,5
+If L6(𝑛)-O≠1
+0→F
+L6(𝑛→O
+End
+If F
+40→P
+End
+If W=11
+Then
+For(𝑛,1,6
+If min(𝑛=L1
+50→P
+End
+End
+Text(49,85,"Pts
+Text(56,85,"         "
+Text(56,85,P
+Goto Q
+Lbl H
+If L2(C+1
+Then
+Text(52,(C+1)17-7,"   "
+0→L2(C+1
+Else
+Text(52,(C+1)17-7,"H
+1→L2(C+1
+End
+Goto G
+Lbl S
+P→L3(W+1
+Text(8U,θ,"   "
+Text(8U,θ-10,P
+3→A
+For(𝑛,1,6
+Text(52,17𝑛-8,"    "
+0→L2(𝑛
+End
+0→O
+-1=min(L3→T
+If T
+Goto R
+Lbl O
+-1≠min(L3→T
+ClrHome
+Output(1,6,"SCORES
+Output(4,1,"TOTAL:
+12→dim(L6
+For(𝑛,1,12
+L3(𝑛)(-1≠L3(𝑛→L6(𝑛
+End
+sum(L6→F
+Output(4,8,F
+Output(2,1,"UPPER:
+0→O
+6→dim(L5
+For(𝑛,1,6
+L3(𝑛)+(-1=L3(𝑛→L5(𝑛
+End
+Output(2,8,sum(L5
+If 63≤sum(L5
+Then
+F+35→F
+Output(4,14,"U
+Output(4,8,"    "
+Output(4,8,F
+End
+Output(3,1,"LOWER:
+For(𝑛,7,12
+L3(𝑛)+(-1=L3(𝑛→L5(𝑛-6
+End
+Output(3,8,sum(L5
+Pause
+Pxl-On(62,94
+Pxl-Off(62,94
+If not(T
+Goto G
+For(J,1,5
+Disp "
+End
+Disp ":3
